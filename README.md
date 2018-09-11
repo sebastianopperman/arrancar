@@ -1,4 +1,4 @@
-# Mag Wordpress Boiler Theme
+# Wordpress Starter Theme
 
 ### Instructions
 - Run `docker-compose up -d`
