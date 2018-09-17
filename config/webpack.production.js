@@ -37,11 +37,17 @@ module.exports = {
             {
               loader: 'postcss-loader',
               options: {
-                plugins: [
+                plugins: loader => [
                   require('postcss-partial-import'),
                   require('autoprefixer'),
                   require('postcss-nested'),
-                  require('postcss-preset-env'),
+                  require('iconfont-webpack-plugin')({
+                    resolve: loader.resolve,
+                    enforcedSvgHeight: 100,
+                  }),
+                  require('postcss-preset-env')({
+                    stage: 0
+                  }),
                   require('cssnano')
                 ]
               },

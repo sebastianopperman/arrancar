@@ -26,6 +26,15 @@ module.exports = {
         }
       },
       {
+        test: /\.(png|woff|woff2|eot|ttf|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'fonts/',
+          publicPath: '../fonts'
+        }
+      },
+      {
         test: /\.css$/,
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
@@ -37,11 +46,18 @@ module.exports = {
             {
               loader: 'postcss-loader',
               options: {
-                plugins: [
+                plugins: loader => [
                   require('postcss-partial-import'),
+                  require('postcss-preset-env')({
+                    stage: 0
+                  }),
+                  require('postcss-hexrgba'),
                   require('autoprefixer'),
                   require('postcss-nested'),
-                  require('postcss-preset-env')
+                  require('iconfont-webpack-plugin')({
+                    resolve: loader.resolve,
+                    enforcedSvgHeight: 100,
+                  })
                 ]
               },
             },
@@ -55,10 +71,6 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: 'src/images',
       to: 'images'
-    }]),
-    new CopyWebpackPlugin([{
-      from: 'src/fonts',
-      to: 'fonts'
     }]),
     new ExtractTextPlugin('css/bundle.css'),
     new BrowserSyncPlugin({
