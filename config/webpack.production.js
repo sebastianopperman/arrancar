@@ -3,6 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin");
 const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
@@ -63,6 +64,17 @@ module.exports = {
       pngquant: {
         quality: '80'
       }
+    }),
+    new ImageminWebpWebpackPlugin({
+      config: [{
+        test: /\.(jpe?g|png)/,
+        options: {
+          quality:  75
+        }
+      }],
+      overrideExtension: true,
+      detailedLogs: false,
+      strict: true
     }),
     new CopyWebpackPlugin([{
       from: 'src/images',

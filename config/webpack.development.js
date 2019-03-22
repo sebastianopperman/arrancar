@@ -26,7 +26,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(woff|woff2|eot|ttf|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
@@ -41,7 +41,9 @@ module.exports = {
           use: [
             {
               loader: 'css-loader',
-              options: {importLoaders: 1},
+              options: {
+                importLoaders: 1,
+              },
             },
             {
               loader: 'postcss-loader',
@@ -63,6 +65,19 @@ module.exports = {
             },
           ],
         }),
+      },
+      {
+        test: /\.(png|jpg|svg|webp|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: './images/',
+              publicPath: '../images/',
+            }
+          }
+        ]
       }
     ]
   },
