@@ -94,7 +94,7 @@ module.exports = {
       open: false,
       ghostMode: false,
       notify: true,
-      proxy: 'http://localhost:8000'
+      proxy: 'http://localhost:8000/'
     })
   ],
   output: {

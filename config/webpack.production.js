@@ -12,7 +12,7 @@ module.exports = {
   stats: 'errors-only',
   optimization: {
     minimize: true,
-    minimizer: [new UglifyWebpackPlugin({ sourceMap: true })],
+    minimizer: [new UglifyWebpackPlugin({ sourceMap: false })],
   },
   module: {
     rules: [
@@ -24,6 +24,15 @@ module.exports = {
           options: {
             presets: ['env']
           }
+        }
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'fonts/',
+          publicPath: '../fonts'
         }
       },
       {
@@ -40,6 +49,7 @@ module.exports = {
               options: {
                 plugins: loader => [
                   require('postcss-partial-import'),
+                  require('postcss-hexrgba'),
                   require('autoprefixer'),
                   require('postcss-nested'),
                   require('iconfont-webpack-plugin')({
@@ -55,6 +65,19 @@ module.exports = {
             },
           ],
         }),
+      },
+      {
+        test: /\.(png|jpg|svg|webp|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: './images/',
+              publicPath: '../images/',
+            }
+          }
+        ]
       }
     ]
   },
@@ -65,21 +88,21 @@ module.exports = {
         quality: '80'
       }
     }),
+    new CopyWebpackPlugin([{
+      from: 'src/images',
+      to: 'images'
+    }]),
     new ImageminWebpWebpackPlugin({
       config: [{
         test: /\.(jpe?g|png)/,
         options: {
-          quality:  75
+          quality:  80
         }
       }],
       overrideExtension: true,
       detailedLogs: false,
       strict: true
     }),
-    new CopyWebpackPlugin([{
-      from: 'src/images',
-      to: 'images'
-    }]),
     new CopyWebpackPlugin([{
       from: 'src/fonts',
       to: 'fonts'
