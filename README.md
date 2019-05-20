@@ -10,3 +10,6 @@
 - Webpack 4
 - Wordpress Dockerized
 - PostCSS
+
+###
+- move to kubectl
