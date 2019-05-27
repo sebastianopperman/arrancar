@@ -12,4 +12,4 @@
 - PostCSS
 
 ###
-- move to kubectl
+- move to docker file based
