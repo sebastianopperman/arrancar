@@ -1,5 +1,5 @@
-/node_modules
-/.idea
+node_modules
+.idea
 .DS_Store
-/theme/dist
-/plugins
+theme/dist
+plugins
