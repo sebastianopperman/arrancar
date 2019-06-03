@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
+
 module.exports = {
   entry: ['./src/js/main.js', './src/css/main.css'],
   mode: 'development',
@@ -25,6 +26,7 @@ module.exports = {
           }
         }
       },
+
       {
         test: /\.(woff|woff2|eot|ttf|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
