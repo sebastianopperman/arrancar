@@ -10,6 +10,3 @@
 - Webpack 4
 - Wordpress Dockerized
 - PostCSS
-
-###
-- move to docker file based
