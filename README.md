@@ -8,4 +8,4 @@
 
 ### Features
 - Webpack 4
-- Wordpress Dockerized
+- Wordpress
