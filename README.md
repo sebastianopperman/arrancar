@@ -8,4 +8,3 @@
 
 ### Features
 - Webpack 4
-- Wordpress
