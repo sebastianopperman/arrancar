@@ -7,4 +7,4 @@
 - Run `npm run build` to build production dist files
 
 ### Features
-- Webpack 4
+- Webpack
