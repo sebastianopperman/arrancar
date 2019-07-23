@@ -6,5 +6,3 @@
 - Run `npm run dev` to start watcher & server
 - Run `npm run build` to build production dist files
 
-Todo
-
