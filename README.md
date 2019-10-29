@@ -1,4 +1,4 @@
-# Wordpress Starter Theme
+# Arrancar is a Wordpress Starter Theme
 
 ### Instructions
 - Run `docker-compose up -d`
